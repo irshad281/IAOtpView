@@ -104,7 +104,6 @@ extension OtpField {
         let height = self.frame.height
         for index in 0...numberOfFields - 1 {
             let frame = CGRect.init(x: CGFloat(index * (width + 5)), y: 0, width: CGFloat(width), height: height)
-            print(frame , width)
             let field = OtpField.init(frame: frame)
             field.tag = index
             field.keyboardType = .numberPad
@@ -154,7 +153,6 @@ extension IAOtpView :UITextFieldDelegate {
                 otpFields[textField.tag + 1].becomeFirstResponder()
                 if otpFields[textField.tag + 1].isEmpty(){
                     otpFields[textField.tag + 1].text = string
-                    print(otpFields)
                 }
             }
             updateLines()
@@ -173,7 +171,6 @@ extension IAOtpView :UITextFieldDelegate {
             }
         }else if text.characters.count == 1 {
             if sender.tag != (numberOfFields - 1) {
-               sender.resignFirstResponder()
                otpFields[sender.tag + 1].becomeFirstResponder()
             }
         }
